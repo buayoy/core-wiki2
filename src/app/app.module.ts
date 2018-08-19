@@ -57,8 +57,12 @@ import { RouterModule } from '@angular/router';
 import { WikiHomeComponent } from './views/test/wiki-home/wiki-home.component';
 import { HomeComponent } from './home/home.component';
 import { CreateStockComponent } from './views/test/create-stock/create-stock.component';
+import { HttpComponent } from './views/test/http/http.component'
+
 import { FileSizePipe } from './file-size.pipe';
-import { HttpComponent } from './views/test/http/http.component';
+;
+import { HttpClientModule } from '@angular/common/http'
+
 
 @NgModule({
   imports: [
@@ -76,6 +80,7 @@ import { HttpComponent } from './views/test/http/http.component';
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
+    HttpClientModule,
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
