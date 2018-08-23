@@ -66,7 +66,7 @@ export class WikiComponent implements OnInit {
    if(this.id){   
     this.firebaseService.editWiki(this.id,wiki).then(this.goToHome)
   }else{
-    this.db.list("/test").push(wiki).then(
+    this.db.list("/benz").push(wiki).then(
       this.goToHome
     )
   }

@@ -7,42 +7,18 @@ import { Component } from '@angular/core';
 })
 export class GoogleMapsComponent {
   title: string = '';
-  lat: number = 37.431489;
-  lng: number = -122.163719;
+  lat: number = 13.7797933;
+  lng: number = 100.5351396;
   zoom: number = 11;
 
   markers: marker[] = [
     {
-      lat: 37.431489,
-      lng: -122.163719,
-      label: 'S',
+      lat: 13.7797933,
+      lng: 100.5351396,
+      label: 'PRD',
       draggable: false,
-      title: 'Stanford',
-      www: 'https://www.stanford.edu/'
-    },
-    {
-      lat: 37.394694,
-      lng: -122.150333,
-      label: 'T',
-      draggable: false,
-      title: 'Tesla',
-      www: 'https://www.tesla.com/'
-    },
-    {
-      lat: 37.331681,
-      lng: -122.030100,
-      label: 'A',
-      draggable: false,
-      title: 'Apple',
-      www: 'https://www.apple.com/'
-    },
-    {
-      lat: 37.484722,
-      lng: -122.148333,
-      label: 'F',
-      draggable: false,
-      title: 'Facebook',
-      www: 'https://www.facebook.com/'
+      title: 'กรมประชาสัมพันธ์',
+      www: 'http://www.prd.go.th'
     }
   ]
 }

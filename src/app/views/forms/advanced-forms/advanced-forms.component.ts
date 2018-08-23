@@ -74,7 +74,7 @@ export class AdvancedFormsComponent {
 
   // ng2-select
   public countries: Array<IOption> = [
-    {label: 'Belgium', value: 'BE'},
+    {label: 'Thailand', value: 'BE'},
     {label: 'Luxembourg', value: 'LU'},
     {label: 'Netherlands', value: 'NL'}
   ];

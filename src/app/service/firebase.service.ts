@@ -14,7 +14,7 @@ export class FirebaseService {
   wikiList: AngularFireList<any>;
   constructor(private db:AngularFireDatabase,
   private router:Router) { 
-    this.wikiList=db.list('test');
+    this.wikiList=db.list('benz');
   }
   getWikiList():Observable<any[]>{
     return this.wikiList.snapshotChanges().map(action=>{
@@ -22,7 +22,7 @@ export class FirebaseService {
     })
   };
   getWiki(id): Observable<any> {
-    return this.db.object('test/' + id).snapshotChanges().map(res => {
+    return this.db.object('benz/' + id).snapshotChanges().map(res => {
     return res.payload.val();
     });
     }

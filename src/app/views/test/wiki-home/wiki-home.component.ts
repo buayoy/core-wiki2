@@ -14,7 +14,7 @@ export class WikiHomeComponent implements OnInit {
   wiki:Wiki = {name:'',description:'',test:'',email:'',pass:''}
   test: any[];
   constructor(db: AngularFireDatabase,private router:Router,private storage:AngularFireStorage) { 
-    this.wikiList = db.list('test');
+    this.wikiList = db.list('benz');
   }
 
   ngOnInit() {
