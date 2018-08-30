@@ -16,9 +16,11 @@ export class RegisterComponent {
   constructor(private db:AngularFireDatabase ,private authen:AngularFireAuth,private router:Router) { }
 
 
-  submitUser(wiki,id){
-    this.authen.auth.createUserWithEmailAndPassword(wiki.email,wiki.pass).then(tes=>{
+  submitUser(wiki){
+    this.authen.auth.createUserWithEmailAndPassword(wiki.email,wiki.pass).then(res=>{
       this.db.list('test').push(wiki)
+      console.log(res);
+      
     }
       
     ).catch(res=>{

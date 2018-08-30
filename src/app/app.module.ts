@@ -61,7 +61,10 @@ import { HttpComponent } from './views/test/http/http.component'
 
 import { FileSizePipe } from './file-size.pipe';
 ;
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ResetpassComponent } from './views/resetpass/resetpass.component'
+import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -101,12 +104,13 @@ import { HttpClientModule } from '@angular/common/http'
     HomeComponent,
     CreateStockComponent,
     HttpComponent,
+    ResetpassComponent,
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-  FirebaseService],
+  FirebaseService,CanActivateViaAuthGuard,AuthService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

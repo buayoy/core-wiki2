@@ -12,13 +12,15 @@ import { TestComponent } from './views/test/test.component';
 import { WikiComponent } from './views/test/wiki/wiki.component';
 import { WikiHomeComponent } from './views/test/wiki-home/wiki-home.component';
 import { HomeComponent } from './home/home.component';
+import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
+import { ResetpassComponent } from './views/resetpass/resetpass.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  },
+    },
   {
     path: '404',
     component: P404Component,
@@ -34,8 +36,15 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
+  {
+    path: 'resetpassword',
+    component: ResetpassComponent,
     data: {
       title: 'Login Page'
     }
@@ -117,13 +126,13 @@ export const routes: Routes = [
       },
       {
         path: 'test/wiki-home',
-        component: WikiHomeComponent,
+        component: WikiHomeComponent,canActivate:[CanActivateViaAuthGuard],
       },
       {
         path: 'test/wiki',
-        component: WikiComponent,
+        component: WikiComponent,canActivate:[CanActivateViaAuthGuard],
       },
-      {path: 'editWiki/:id',component: WikiComponent,}
+      {path: 'editWiki/:id',component: WikiComponent,canActivate:[CanActivateViaAuthGuard],}
       
     ]
   }
