@@ -1,0 +1,30 @@
+
+        <div class="card-body">
+          <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Coin Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">market cap</th>
+            <th scope="col">volume(24h)</th>
+            <th scope="col">change(24h)</th>
+            <th scope="col">price graph(7d)</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let market of markets; let i=index">
+            <th scope="row">{{market.rank}}</th>
+            <td><a href="https://coinmarketcap.com/currencies/{{market.website_slug}}">{{market.name}}</a></td>
+            <td>{{market.quotes.USD.price}}</td>
+            <td>{{market.quotes.USD.market_cap | currency:'USD':true:'4.0'}}</td>
+            <td>{{market.quotes.USD.volume_24h}}</td>
+            <td>{{market.quotes.USD.percent_change_24h}}</td>
+            <td>{{market.quotes.USD.percent_change_24h}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  

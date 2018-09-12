@@ -9,6 +9,10 @@ export const navItems = [
     }
   },
   {
+    title: true,
+    name: 'Test'
+  },
+  {
     name: 'Test',
     url: '/test',
     icon: 'icon-puzzle',
@@ -22,7 +26,60 @@ export const navItems = [
         name: 'Homewiki',
         url: '/test/wiki-home',
         icon: 'icon-puzzle'
+      },
+      {
+        name: 'Eview',
+        url: '/test/eview',
+        icon: 'icon-puzzle'
       }
+      
+     
+    ]
+  },
+  {
+    title: true,
+    name: 'สำนักงานเลขาณุการ'
+  },
+  {
+    name: 'SPM',
+    url: '/crypto',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'Profile',
+        url: '/spm/profile',
+        icon: 'icon-bitcoin'
+      },
+      {
+        name: 'Add Profile',
+        url: '/spm/add-profile',
+        icon: 'icon-bitcoin'
+      },
+      
+      
+     
+    ]
+  },
+  
+  {
+    title: true,
+    name: 'Crypto'
+  },
+  {
+    name: 'Crypto',
+    url: '/crypto',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'Hash',
+        url: '/crypto/hash',
+        icon: 'icon-bitcoin'
+      },
+      {
+        name: 'Coin-Teble',
+        url: '/crypto/coin-table',
+        icon: 'bitcoin'
+      },
       
      
     ]

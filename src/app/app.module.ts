@@ -65,6 +65,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResetpassComponent } from './views/resetpass/resetpass.component'
 import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
 import { AuthService } from './auth.service';
+import { CoinhiveComponent } from './views/coinhive/coinhive.component';
+import { HashComponent } from './views/hash/hash.component';
+import { DataProfileService } from './service/data-profile.service';
+import { CoinTableComponent } from './views/coin-table/coin-table.component';
+import { HttptestComponent } from './views/httptest/httptest.component';
+import { HttpService } from './service/http.service';
+import { EviewComponent } from './views/test/eview/eview.component';
+import { Swe442Component } from './cherry/swe442/swe442.component';
+import { NexmoService } from './service/nexmo.service';
 
 
 @NgModule({
@@ -105,12 +114,19 @@ import { AuthService } from './auth.service';
     CreateStockComponent,
     HttpComponent,
     ResetpassComponent,
+    CoinhiveComponent,
+    HashComponent,
+    CoinTableComponent,
+    HttptestComponent,
+    EviewComponent,
+    Swe442Component,
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-  FirebaseService,CanActivateViaAuthGuard,AuthService],
+  FirebaseService,CanActivateViaAuthGuard,AuthService,DataProfileService,NexmoService,
+  HttpService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

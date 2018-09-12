@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "test-tot-f5cc0"
+    "default": "test-palm",
+    "dist": "test-palm"
   }
 }

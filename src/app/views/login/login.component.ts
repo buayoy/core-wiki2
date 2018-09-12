@@ -35,4 +35,5 @@ export class LoginComponent {
   GotoRegister(){
     this.router.navigate(['register'])
   }
+  
  }

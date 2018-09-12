@@ -1,0 +1,136 @@
+<div class="card">
+    <div class="card-header" align="center">
+      <div>
+        <h5>การพยากรณ์ความเสี่ยงของผู้ป่วยที่เป็นโรคหัวใจในประเทศออสเตรเลีย</h5>
+      </div>
+      
+    </div>
+    <div class="card-header">
+  
+      <fieldset class="form-group">
+        <label>age (อายุ)</label>
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-user-circle-o "></i>
+            </span>
+          </span>
+          <input type="text" name="age" ngModel [(ngModel)]="bigdata.age">
+  
+        </div>
+  
+      </fieldset>
+      <fieldset class="form-group">
+        <label>sex (ชาย=0, หญิง=1)</label>
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-intersex"></i>
+            </span>
+          </span>
+          <input type="text" name="sex " ngModel [(ngModel)]="bigdata.sex">
+  
+        </div>
+  
+      </fieldset>
+      <fieldset class="form-group">
+        <label>chest pain type (ระดับการเจ็บหน้าอก ปกติ=1, น้อย=2, ปานกลาง=3, รุนแรง=4)</label>
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-mail-forward"></i>
+            </span>
+          </span>
+          <input type="text" name="chestpaintype" ngModel [(ngModel)]="bigdata.chestpaintype">
+  
+        </div>
+  
+      </fieldset>
+      <fieldset class="form-group">
+        <label>resting blood pressure (ระดับความดันโลหิต)</label>
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-mail-forward"></i>
+            </span>
+          </span>
+          <input type="text" name="restingbloodpressure" ngModel [(ngModel)]="bigdata.restingbloodpressure">
+  
+        </div>
+  
+      </fieldset>
+      <fieldset class="form-group">
+        <label>serum cholestoral (ระดับคอเลสเตอรอลในเลือด)</label>
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-mail-forward"></i>
+            </span>
+          </span>
+          <input type="text" name="serumcholestoralinmgdl" ngModel [(ngModel)]="bigdata.serumcholestoralinmgdl">
+  
+        </div>
+  
+      </fieldset>
+      <fieldset class="form-group">
+        <label>oldpeak (ภาวะอาการซึมเศร้า)</label>
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-mail-forward"></i>
+            </span>
+          </span>
+          <input type="text" name="oldpeakST" ngModel [(ngModel)]="bigdata.oldpeakST">
+  
+        </div>
+  
+      </fieldset>
+  
+      <button class='btn btn-success' (click)=submitMining(bigdata)>Submit</button>
+  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Combined All Table
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <td>Age</td>
+                <td>Sex</td>
+                <td>chestpaintype</td>
+                <td>restingbloodpressure</td>
+  
+                <td>oldpeakST</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let data of List">
+
+                <td>{{data.value.age}}</td>
+                <td>{{data.value.sex}}</td>
+                <td>{{data.value.chestpaintype}}</td>
+                <td>{{data.value.restingbloodpressure}}</td>
+                <td>{{data.value.oldpeakST}}</td>
+                <td>
+                  <button class="badge badge-danger" type="button" (click)="delWiki(data)">Delete</button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  
+  
+  

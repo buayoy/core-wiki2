@@ -14,6 +14,11 @@ import { WikiHomeComponent } from './views/test/wiki-home/wiki-home.component';
 import { HomeComponent } from './home/home.component';
 import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
 import { ResetpassComponent } from './views/resetpass/resetpass.component';
+import { CoinhiveComponent } from './views/coinhive/coinhive.component';
+import { HashComponent } from './views/hash/hash.component';
+import { CoinTableComponent } from './views/coin-table/coin-table.component';
+import { EviewComponent } from './views/test/eview/eview.component';
+import { Swe442Component } from './cherry/swe442/swe442.component';
 
 export const routes: Routes = [
   {
@@ -37,16 +42,16 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: LoginComponent,
+    component: Swe442Component,
     data: {
-      title: 'Login Page'
+      title: 'SWE422 Page'
     }
   },
   {
     path: 'resetpassword',
     component: ResetpassComponent,
     data: {
-      title: 'Login Page'
+      title: 'Reset Password Page'
     }
   },
   {
@@ -54,6 +59,13 @@ export const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'swe442',
+    component: Swe442Component,
+    data: {
+      title: 'Swe442'
     }
   },
   {
@@ -76,7 +88,7 @@ export const routes: Routes = [
         loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
       },
       {
-        path: 'dashboard',
+        path: 'dashboard2',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
       {
@@ -132,7 +144,17 @@ export const routes: Routes = [
         path: 'test/wiki',
         component: WikiComponent,canActivate:[CanActivateViaAuthGuard],
       },
-      {path: 'editWiki/:id',component: WikiComponent,canActivate:[CanActivateViaAuthGuard],}
+      {path: 'editWiki/:id',component: WikiComponent,canActivate:[CanActivateViaAuthGuard],},
+      {path: 'mining',component: CoinhiveComponent },
+      {path:'crypto/hash',component:HashComponent},
+      {path: "crypto/coin-table" , component:CoinTableComponent},
+      {path: "test/eview" , component:EviewComponent},
+    {
+      path: 'dashboard',
+    component: EviewComponent
+    },
+      
+    
       
     ]
   }

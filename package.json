@@ -54,6 +54,7 @@
     "font-awesome": "^4.7.0",
     "moment": "2.22.2",
     "mutationobserver-shim": "^0.3.2",
+    "nexmo": "^2.3.2",
     "ng-select": "^1.0.0-rc.5",
     "ng2-ace-editor": "^0.3.8",
     "ng2-charts": "1.6.0",
