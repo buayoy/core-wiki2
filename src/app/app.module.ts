@@ -74,7 +74,17 @@ import { HttpService } from './service/http.service';
 import { EviewComponent } from './views/test/eview/eview.component';
 import { Swe442Component } from './cherry/swe442/swe442.component';
 import { NexmoService } from './service/nexmo.service';
-
+import { CherryFinalComponent } from './views/cherry-final/cherry-final.component';
+import { Home2Component } from './cherryFinal/home/home.component';
+import { UserComponent } from './cherryFinal/user/user.component';
+import { BusDetailComponent } from './cherryFinal/bus-detail/bus-detail.component';
+import { ModalModule, ButtonsModule, PaginationModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { UserService } from './cherryFinal/service/user.service';
+import { EdituserComponent } from './cherryFinal/edituser/edituser.component';
+import { DriverComponent } from './cherryFinal/driver/driver.component';
+import { EditDriverComponent } from './cherryFinal/edit-driver/edit-driver.component';
+import { CarComponent } from './cherryFinal/car/car.component';
+import { EditCarComponent } from './cherryFinal/edit-car/edit-car.component';
 
 @NgModule({
   imports: [
@@ -93,10 +103,15 @@ import { NexmoService } from './service/nexmo.service';
     AppHeaderModule,
     AppSidebarModule,
     HttpClientModule,
+    ModalModule.forRoot(),
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    ButtonsModule.forRoot(),
+    PaginationModule.forRoot(),
+    BsDatepickerModule.forRoot()
+    
   ],
   declarations: [
     AppComponent,
@@ -113,6 +128,7 @@ import { NexmoService } from './service/nexmo.service';
     HomeComponent,
     CreateStockComponent,
     HttpComponent,
+    Home2Component,
     ResetpassComponent,
     CoinhiveComponent,
     HashComponent,
@@ -120,12 +136,21 @@ import { NexmoService } from './service/nexmo.service';
     HttptestComponent,
     EviewComponent,
     Swe442Component,
+    CherryFinalComponent,
+    UserComponent,
+    BusDetailComponent,
+    EdituserComponent,
+    DriverComponent,
+    EditDriverComponent,
+    CarComponent,
+    EditCarComponent,
+
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-  FirebaseService,CanActivateViaAuthGuard,AuthService,DataProfileService,NexmoService,
+  FirebaseService,CanActivateViaAuthGuard,AuthService,DataProfileService,NexmoService,UserService,
   HttpService],
   bootstrap: [ AppComponent ]
 })

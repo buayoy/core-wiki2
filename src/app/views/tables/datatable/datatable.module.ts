@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 // DataTable
 import { DataTableModule } from 'angular2-datatable';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule  } from '@angular/common/http';
 import { DataFilterPipe } from './datafilterpipe';
 import { FormsModule } from '@angular/forms';
 
 import { DataTableComponent } from './datatable.component';
 
-//Routing
+// Routing
 import { DatatableRoutingModule } from './datatable-routing.module';
 //
 @NgModule({
@@ -18,7 +18,7 @@ import { DatatableRoutingModule } from './datatable-routing.module';
     CommonModule,
     DataTableModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   declarations: [
     DataTableComponent,

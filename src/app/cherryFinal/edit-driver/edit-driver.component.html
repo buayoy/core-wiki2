@@ -1,0 +1,65 @@
+<style>
+    .driver{
+      align-items: center ;
+    }
+  
+  </style>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <i class="fa fa-align-justify"></i> Driver
+
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="card-body">
+          <p class="text-muted">Edit Driver</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-drivers-license"></i></span>
+            </div>
+            <input name="name" type="text" class="form-control" [(ngModel)]="user.drivername" placeholder="กรอกชื่อจริงนามสกุล">
+          </div>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-user"></i></span>
+              </div>
+              <input name="name" type="text" class="form-control" [(ngModel)]="user.responsible" placeholder="สังกัด">
+            </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-user"></i></span>
+            </div>
+            <input name="position" type="text" class="form-control" [(ngModel)]="user.position" placeholder="ตำแหน่ง">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-phone"></i></span>
+            </div>
+            <input name="phonenumber" type="text" class="form-control" [(ngModel)]="user.phonenumber" placeholder="เบอร์โทรศีพท์">
+          </div>
+          <div class="d-flex justify-content-center">
+
+            <button (click)='submit(user)' style=" align-self: center; " type="button" class="col-lg-3 btn  btn-success">ยืนยันการแก้ไข</button>
+            <button (click)="openModal(template)" type="button" class="col-lg-3 btn  btn-danger">ลบคนขับ</button>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>ยืนยันการลบคนขับ {{user.drivername}}</p>
+    <button type="button" class="btn btn-danger" (click)='deleteDriver()' >ยืนยันการลบ</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef.hide()" >ยกเลิก</button>
+  </div>
+</ng-template>

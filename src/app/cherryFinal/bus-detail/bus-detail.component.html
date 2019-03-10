@@ -1,0 +1,262 @@
+<div class="card">
+    <div [ngStyle]="headerStyles" class="card-header">
+        <h3>{{textStatus}}</h3>
+        <!-- <button type="button" [ngClass]="classHeader"  aria-pressed="true">{{textStatus}}</button> -->
+
+        <!-- <a href="#" class="btn btn-sm btn-info float-right" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</a>
+              <a href="#" class="btn btn-sm btn-info float-right"><i class="fa fa-save"></i> Save</a> -->
+    </div>
+    <div class="card-header">
+        <img style="display: block;
+                margin-left: auto;
+                margin-right: auto;" src="http://58.82.137.70/2016/wp-content/uploads/2016/01/Logo-WEB-North.png"
+            width="50%;" alt="" border=3>
+
+    </div>
+
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-sm-12">
+                    <div class="card">
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <label style="font-size:120%;" class="col-sm-6">ชื่อผู้จอง : {{Detailuser.fullname}}</label>
+                                    <!-- <strong>{{Detailbook.name}}</strong> -->
+                                    <label style="font-size:120%;" class="col-sm-6">ปี/เดือน/วันเกิด :
+                                        {{Detailuser.dob}}</label>
+        
+                                </div>
+                                <div class="row">
+                                    <label style="font-size:120%;" class="col-sm-6">รหัสประจำตัว : {{Detailuser.codeid}}</label>
+                                    <!-- <strong>{{Detailbook.name}}</strong> -->
+                                    <label style="font-size:120%;" class="col-sm-6">ตำแหน่ง : {{Detailuser.position}}</label>
+        
+                                </div>
+                                <div class="row">
+                                    <label style="font-size:120%;" class="col-sm-6">เบอร์โทรศัพท์ : {{Detailuser.phone}}</label>
+                                    <!-- <strong>{{Detailbook.name}}</strong> -->
+                                    <label style="font-size:120%;" class="col-sm-6">คณะ :
+                                        {{Detailuser.faculty}}</label>
+        
+                                </div>
+                                <div class="row">
+                                    <label style="font-size:120%;" class="col-sm-6">เบอร์โทรศัพท์ติดต่อกลับ :
+                                        {{Detailuser.email}}</label>
+                                    <!-- <strong>{{Detailbook.name}}</strong> -->
+                                    <label style="font-size:120%;" class="col-sm-6">สังกัด : {{Detailbook.responsible}}</label>
+        
+                                </div>
+                                
+                            </div>
+                        </div>
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="row">
+                            <label style="font-size:120%;" class="col-sm-6">ชื่อโครงการ : {{Detailbook.projectname}}</label>
+                            <!-- <strong>{{Detailbook.name}}</strong> -->
+                            <label style="font-size:120%;" class="col-sm-6">วันเวลาที่ไป :
+                                    {{Detailbook.start_date}}( {{Detailbook.timestart}} )</label>
+
+                        </div>
+                        <div class="row">
+                            <label style="font-size:120%;" class="col-sm-6">สถานที่ปลฃายทาง : {{Detailbook.place}}</label>
+                            <!-- <strong>{{Detailbook.name}}</strong> -->
+                            <label style="font-size:120%;" class="col-sm-6">วันเวลาที่กลับ :
+                                    {{Detailbook.end_date}}( {{Detailbook.timesend}} )</label>
+
+                        </div>
+                        <div class="row">
+                            <label style="font-size:120%;" class="col-sm-6">ประเภทยานพาหนะ : {{Detailbook.cartype}} ทะเบียน {{Detailbook.carid}}</label>
+                            <!-- <strong>{{Detailbook.name}}</strong> -->
+                            <label style="font-size:120%;" class="col-sm-6">พนักงานขับรถ :
+                                {{Detailbook.driver}}</label>
+
+                        </div>
+                        <div class="row">
+                            <label style="font-size:120%;" class="col-sm-6">สถานะยานพาหนะ :
+                                {{Detailbook.carstate}}</label>
+                            <!-- <strong>{{Detailbook.name}}</strong> -->
+                            <label style="font-size:120%;" class="col-sm-6">เบอร์โทรติดต่อ : {{Detailbook.phonenumber}}</label>
+
+                        </div>
+                        <div class="row">
+                            <label style="font-size:120%;" class="col-sm-6">ระยะทางไป/กลับ(กม.) : {{Detailbook.totaldistance}}</label>
+                            <!-- <strong>{{Detailbook.name}}</strong> -->
+                            <label style="font-size:120%;" class="col-sm-6">พนักงานขับรถ : {{Detailbook.driver_name}}</label>
+
+                        </div>
+                        <div class="row">
+                            <label style="font-size:120%;" class="col-sm-6">เลขระยะทางก่อนใช้งาน : {{Detailbook.distancestart}}</label>
+                            <!-- <strong>{{Detailbook.name}}</strong> -->
+                            <label *ngIf='Detailbook.status == 5' style="font-size:120%;" class="col-sm-6">ระยะทางเติมน้ำมัน : {{Detailbook.oildistance}} จำนวนลิตร : {{Detailbook.oiltotal}}</label>
+
+                        </div>
+                        <div class="row">
+                                <label style="font-size:120%;" class="col-sm-6"></label>
+                                <!-- <strong>{{Detailbook.name}}</strong> -->
+                                <label *ngIf='Detailbook.status == 5' style="font-size:120%;" class="col-sm-6">จำนวนเงิน : {{Detailbook.total}}</label>
+    
+                            </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>วัตถุประสงค์</strong>
+                            </div>
+                            <div class="card-body">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    {{Detailbook.objective}}
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>เอกสารใบโครงการ</strong>
+                            </div>
+                            <div class="card-body">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div *ngFor="let data of images; let i=index">
+                                        <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                                            <button (click)="openModal(template)" type="button" class="btn btn-ghost-success"><i
+                                                    class="fa fa-lightbulb-o"></i>&nbsp;เอกสารใบโครงการที่ :{{i+1}}</button><br>
+                                        </div>
+                                        <!-- <a (click)="openModal(template)" href="https://github.com/KillerCodeMonkey/ngx-quill" class="badge badge-primary ml-2">รูปเอกสารโครงการที่{{i+1}}</a><br> -->
+                                        <ng-template #template>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title pull-left">เอกสารใบโครงการ</h4>
+                                                <button type="button" class="close pull-right" aria-label="Close"
+                                                    (click)="modalRef.hide()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <img src="http://cherryproject.store/cherry_api/public/upload/book/{{data.filename}}"
+                                                alt="" border=3>
+                                        </ng-template>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf='Detailbook.status == 1' class="row">
+                        <div  class="col-md-6"  >
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong style="color:red;">สาเหตุที่ไม่อนุมัติ</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            {{Detailbook.cause}}
+        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                
+                <div *ngIf='Detailbook.status == 3' class="row">
+                        
+                        <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>ตำแหน่งธุรการ/อนุมัติโดย</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            {{Detailbook.approve_by}}
+        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <div *ngIf='Detailbook.status == 4' class="row">
+                        <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>ตำแหน่งธุรการ/อนุมัติโดย</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            {{Detailbook.approve_by}}
+        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong>ผู้อำนวยการ/อนุมัติโดย</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                {{Detailbook.complate_by}}
+            
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                </div>
+                
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <!--/.col-->
+
+
+        </div>
+        <!--/.row-->
+        <div class="row">
+                <button style="display: block;
+                margin-left: auto;
+                margin-right: 10px;
+                " *ngIf='Detailbook.status == 1 || Detailbook.status == 2 || Detailbook.status == 3 || Detailbook.status == 4 && notshowbutton != true' 
+                 (click)='changeStatus(Detailbook)' [disabled]="disabled" type="button" class="btn btn-success">อนุมัติ</button>
+                <button style="display: block;
+                margin-left: 10px;
+                " *ngIf='Detailbook.status == 1 || Detailbook.status == 2 || Detailbook.status == 3 || Detailbook.status == 4 && notshowbutton != true'  type="button" class="btn btn-danger" (click)="openModal(template2)" [disabled]="disabled2">ไม่อนุมัติ</button>
+                <!-- <a (click)='changeStatus()' class="btn btn-success"><i class=""></i>อนุมัติ</a> -->
+                <button 
+                style="display: block;
+                margin-left: 10px;
+                margin-right: auto;"
+        class="btn btn-ghost-success"  (click)='Print()'>Print</button>
+        </div>
+    </div>
+</div>
+<ng-template #template2>
+        <div class="modal-body text-center">
+          <h3 *ngIf='cause == "" ' style="color: red">กรุณากรอกสาเหตุที่ไม่อนุมัติ</h3>
+          <h3 *ngIf='cause != "" ' style="color: black">กรุณากรอกสาเหตุที่ไม่อนุมัติ</h3>
+          <div class="form-group row">
+                <!-- <label class="col-md-3 col-form-label" for="textarea-input">Textarea</label> -->
+                <div class="col-md-12">
+                  <textarea [(ngModel)]="cause" id="textarea-input" name="textarea-input" rows="5" class="form-control" placeholder="กรุณากรอกสาเหตุที่ไม่อนุมัติ"></textarea>
+                </div>
+              </div>
+              <!-- <p *ngIf='cause == "" ' style="color:red;">กรุณากรอกสาเหตุที่ไม่อนุมัติ</p> -->
+          <button type="button" class="btn btn-default" (click)="reject(cause)" >ยืนยันการไม่อนุมัติ</button>
+          <button type="button" class="btn btn-primary" (click)='modalRef.hide()' >ยกเลิก</button>
+        </div>
+      </ng-template>

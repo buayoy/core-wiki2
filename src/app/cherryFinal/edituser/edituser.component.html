@@ -1,0 +1,99 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <i class="fa fa-align-justify"></i> User
+
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="card-body">
+          <p class="text-muted">Edit User</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-user"></i></span>
+            </div>
+            <input name="name" type="text" class="form-control" [(ngModel)]="user.fullname" placeholder="กรอกชื่อจริงนามสกุล">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-user"></i></span>
+            </div>
+            <input name="name" type="text" class="form-control" disabled value="{{user.codeid}}" placeholder="รหัสประจำตัว">
+          </div>
+          <div *ngIf='Detailuser.position != "ธุรการ" && Detailuser.position != "ผู้อำนวยการสำนักบริหาร" ' class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-lock"></i></span>
+            </div>
+            <input name="pass" type='password' class="form-control" [(ngModel)]="user.oldpassword" placeholder="พาสเวิร์ดเก่า">
+
+          </div>
+          <span class="mb-3" *ngIf='wongpassword == true' style="color:red;">รหัสผ่านเก่าไม่ถูกต้อง</span>
+
+          <div *ngIf='Detailuser.position != "ธุรการ" && Detailuser.position != "ผู้อำนวยการสำนักบริหาร" ' class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-lock"></i></span>
+            </div>
+            <input name="pass" type='password' class="form-control" [(ngModel)]="user.newpassword" placeholder="พาสเวิร์ดใหม่">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input name="email" type="email" class="form-control" disabled value="{{user.email}}" placeholder="อีเมล">
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <select [(ngModel)]="user.faculty" id="user.faculty" name="user.faculty" class="form-control">
+                <option value="">คณะ</option>
+                <option *ngFor='let data of faculty' value="{{data.value}}">{{data.value}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+
+            <div class="col-md-12">
+              <select [(ngModel)]="user.position" id="user.position" name="user.position" class="form-control">
+                <option value="{{user.position}}">{{user.position}}</option>
+                <option *ngFor='let data of position' value="{{data.value}}">{{data.value}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-phone"></i></span>
+            </div>
+            <input name="name" type="text" class="form-control" [(ngModel)]="user.phone" placeholder="เบอร์โทรศัพท์">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">วันเกิด</span>
+            </div>
+            <input class="form-control" [(ngModel)]="user.dob" id="date-input" type="date" name="date-input"
+              placeholder="date">
+          </div>
+          <div class="d-flex justify-content-center">
+
+              <button (click)='submit(user)' style=" align-self: center; " type="button" class="col-lg-3 btn  btn-success">ยืนยันการแก้ไข</button>
+              <button *ngIf='user.status != 1 && user.status != 2 '  (click)="openModal(template)" type="button" class="col-lg-3 btn  btn-danger">ลบผู้ใช้งาน</button>
+  
+            </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<ng-template #template>
+    <div class="modal-body text-center">
+      <p>ยืนยันการลบผู้ใช้งาน {{user.fullname}}</p>
+      <button type="button" class="btn btn-danger" (click)='deleteUser()' >ยืนยันการลบ</button>
+      <button type="button" class="btn btn-primary" (click)="modalRef.hide()" >ยกเลิก</button>
+    </div>
+  </ng-template>

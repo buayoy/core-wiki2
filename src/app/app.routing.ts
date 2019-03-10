@@ -11,7 +11,6 @@ import { RegisterComponent } from './views/register/register.component';
 import { TestComponent } from './views/test/test.component';
 import { WikiComponent } from './views/test/wiki/wiki.component';
 import { WikiHomeComponent } from './views/test/wiki-home/wiki-home.component';
-import { HomeComponent } from './home/home.component';
 import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
 import { ResetpassComponent } from './views/resetpass/resetpass.component';
 import { CoinhiveComponent } from './views/coinhive/coinhive.component';
@@ -19,13 +18,33 @@ import { HashComponent } from './views/hash/hash.component';
 import { CoinTableComponent } from './views/coin-table/coin-table.component';
 import { EviewComponent } from './views/test/eview/eview.component';
 import { Swe442Component } from './cherry/swe442/swe442.component';
+import { Home2Component } from './cherryFinal/home/home.component';
+import { UserComponent } from './cherryFinal/user/user.component';
+import { BusDetailComponent } from './cherryFinal/bus-detail/bus-detail.component';
+import { EdituserComponent } from './cherryFinal/edituser/edituser.component';
+import { DriverComponent } from './cherryFinal/driver/driver.component';
+import { EditDriverComponent } from './cherryFinal/edit-driver/edit-driver.component';
+import { CarComponent } from './cherryFinal/car/car.component';
+import { EditCarComponent } from './cherryFinal/edit-car/edit-car.component';
+
 
 export const routes: Routes = [
+  
   {
-    path: 'dashboard',
-    redirectTo: 'dashboard',
+    path: 'databus',
+    redirectTo: 'databus',
     pathMatch: 'full',
     },
+    {
+      path: 'dashboard',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
+      },
+    {
+      path: '',
+      redirectTo: 'login',
+      pathMatch: 'full',
+      },
   {
     path: '404',
     component: P404Component,
@@ -41,7 +60,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: '',
+    path: 'swe422',
     component: Swe442Component,
     data: {
       title: 'SWE422 Page'
@@ -54,18 +73,19 @@ export const routes: Routes = [
       title: 'Reset Password Page'
     }
   },
+  
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: 'login',
+    component: LoginComponent,
     data: {
-      title: 'Register Page'
+      title: 'login'
     }
   },
   {
-    path: 'swe442',
-    component: Swe442Component,
+    path: 'final',
+    component: Home2Component,
     data: {
-      title: 'Swe442'
+      title: 'final'
     }
   },
   {
@@ -88,7 +108,7 @@ export const routes: Routes = [
         loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
       },
       {
-        path: 'dashboard2',
+        path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
       {
@@ -149,9 +169,18 @@ export const routes: Routes = [
       {path:'crypto/hash',component:HashComponent},
       {path: "crypto/coin-table" , component:CoinTableComponent},
       {path: "test/eview" , component:EviewComponent},
+      {path:'databus' , component:Home2Component},
+      {path:'userbus' , component:UserComponent},
+      {path:'databus/detail/:id' , component:BusDetailComponent},
+      {path:'user/edit/:id' , component:EdituserComponent},
+      {path:'userbus/adduser' , component: RegisterComponent},
+      {path: 'driver' , component : DriverComponent},
+      {path: 'car' , component : CarComponent},
+      {path:'driver/edit/:id' ,component:EditDriverComponent},
+      {path:'car/edit/:id' ,component:EditCarComponent},
     {
-      path: 'dashboard',
-    component: EviewComponent
+      path: 'dashboard2',
+    component: Home2Component
     },
       
     

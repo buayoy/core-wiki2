@@ -1,0 +1,119 @@
+<div class="animated fadeIn">
+<!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+         
+              <i class="fa fa-align-justify"></i> Car
+              
+        </div>
+        <div class="card-body">
+            <button class="btn btn-ghost-success"  (click)="lgModal.show()" >เพิ่มรถ</button>
+            
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <td>เลขทะเบียนรถ</td>
+                <td>ยี่ห้อ</td>
+                <td>รุ่น</td>
+                <td>เลขบอกระยะทางปัจจุบัน</td>
+                <td>ประเภท</td>
+                <td>Action</td>
+  
+               
+              </tr>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let data of CarAll">
+  
+                <td>{{data.carid}}</td>
+                <td>{{data.brand}}</td>
+                <td>{{data.gen}}</td>
+                <td>{{data.distance}}</td>
+                <td>{{data.type}}</td>
+                <td>
+                    <button class="badge badge-warning" (click)='editcar(data)' type="button"  >แก้ไข</button>
+                </td>
+  
+  
+  
+               
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>
+  <!-- modal ส่วนเพิ่ม user -->
+  <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
+       role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="dialog-sizes-name1" class="modal-title pull-left">เพิ่มรถ</h4>
+          <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+              
+  
+                          <div class="card-body">
+                            <p class="text-muted">เพิ่มรถ</p>
+                            <div class="form-group row">
+
+                                <div class="col-md-12">
+                                  <select [(ngModel)]="car.type" id="car.type" name="car.type" class="form-control">
+                                    <option value="">--เลือกประเภทรถยนต์--</option>
+                                    <option *ngFor='let data of cartype'  value="{{data.value}}">{{data.value}}</option>
+                                  </select>
+                                </div>
+                              </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                              </div>
+                              <input name="position" type="text" class="form-control" [(ngModel)]="car.brand" placeholder="ยี่ห้อ">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="icon-phone"></i></span>
+                                </div>
+                                <input name="phonenumber" type="text" class="form-control" [(ngModel)]="car.gen" placeholder="รุ่น">
+                              </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-phone"></i></span>
+                              </div>
+                              <input name="phonenumber" type="text" class="form-control" [(ngModel)]="car.carid" placeholder="ทะเบียนรถ">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="icon-phone"></i></span>
+                                </div>
+                                <input name="phonenumber" type="text" class="form-control" [(ngModel)]="car.distance" placeholder="เลขบอกระยะทาง">
+                              </div>
+                            
+                             
+                            
+                            <button (click)='addcar(car)' type="button" class="btn btn-block btn-success">Add Car</button>
+                          </div>
+                          
+  
+                      
+                   
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.row-->
+  
+  
+  

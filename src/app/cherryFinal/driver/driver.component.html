@@ -1,0 +1,109 @@
+<div class="animated fadeIn">
+
+<!--/.row-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+       
+            <i class="fa fa-align-justify"></i> Driver
+            
+      </div>
+      <div class="card-body">
+          <button class="btn btn-ghost-success"  (click)="lgModal.show()" >เพิ่มคนขับ</button>
+          
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <td>ชื่อ-นามสกุล</td>
+              <td>ตำแหน่ง</td>
+              <td>สังกัด</td>
+              <td>เบอร์โทรศีพท์</td>
+              <td>Action</td>
+
+             
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let data of DriverAll">
+
+              <td>{{data.drivername}}</td>
+              <td>{{data.position}}</td>
+              <td>{{data.responsible}}</td>
+              <td>{{data.phonenumber}}</td>
+              <td>
+                  <button class="badge badge-warning" (click)='editdriver(data)' type="button"  >แก้ไข</button>
+              </td>
+
+
+
+             
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+</div>
+
+<!-- modal ส่วนเพิ่ม user -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">เพิ่มคนขับ</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+            
+
+                        <div class="card-body">
+                          <p class="text-muted">เพิ่มคนขับ</p>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-drivers-license"></i></span>
+                            </div>
+                            <input name="name" type="text" class="form-control" [(ngModel)]="user.drivername" placeholder="กรอกชื่อจริงนามสกุล">
+                          </div>
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                              </div>
+                              <input name="name" type="text" class="form-control" [(ngModel)]="user.responsible" placeholder="สังกัด">
+                            </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input name="position" type="text" class="form-control" [(ngModel)]="user.position" placeholder="ตำแหน่ง">
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-phone"></i></span>
+                            </div>
+                            <input name="phonenumber" type="text" class="form-control" [(ngModel)]="user.phonenumber" placeholder="เบอร์โทรศีพท์">
+                          </div>
+                          
+                           
+                          
+                          <button (click)='adddriver(user)' type="button" class="btn btn-block btn-success">Create Driver</button>
+                        </div>
+                        
+
+                    
+                 
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->
+
+

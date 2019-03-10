@@ -1,0 +1,142 @@
+<div class="animated fadeIn">
+
+<!--/.row-->
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+            <i class="fa fa-align-justify"></i> User
+      </div>
+      <div class="card-body">
+          <button 
+                    
+          class="btn btn-ghost-success"  (click)="lgModal.show()" >เพิ่มผู้ใช้งาน</button>
+          
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <td>รหัสประจำตัว</td>
+              <td>ชื่อ-นามสกุล</td>
+              <td>ตำแหน่ง</td>
+              <td>อีเมล</td>
+              <td>คณะ</td>
+              <td>เบอร์โทรศีพท์</td>
+              <td>Action</td>
+
+             
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let data of DataBus">
+
+              <td>{{data.codeid}}</td>
+              <td>{{data.fullname}}</td>
+              <td>{{data.position}}</td>
+              <td>{{data.email}}</td>
+              <td>{{data.faculty}}</td>
+              <td>{{data.phone}}</td>
+              <td>
+                  <button class="badge badge-warning" type="button" (click)="edituser(data)" >แก้ไข</button>
+              </td>
+
+
+
+             
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+</div>
+
+
+<!-- modal ส่วนเพิ่ม user -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">เพิ่มผู้ใช้งาน</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+            
+
+                        <div class="card-body">
+                          <p class="text-muted">Create your account</p>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input name="name" type="text" class="form-control" [(ngModel)]="user.fullname" placeholder="กรอกชื่อจริงนามสกุล">
+                          </div>
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                              </div>
+                              <input name="name" type="text" class="form-control" [(ngModel)]="user.codeid" placeholder="รหัสประจำตัว">
+                            </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">@</span>
+                            </div>
+                            <input name="email" type="email" class="form-control" [(ngModel)]="user.email" placeholder="อีเมล">
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-lock"></i></span>
+                            </div>
+                            <input name="pass" type="password" class="form-control" [(ngModel)]="user.password" placeholder="พาสเวิร์ด">
+                          </div>
+                          <div class="form-group row">
+
+                              <div class="col-md-12">
+                                <select [(ngModel)]="user.faculty" id="user.faculty" name="user.faculty" class="form-control">
+                                  <option value="">คณะ</option>
+                                  <option *ngFor='let data of faculty'  value="{{data.value}}">{{data.value}}</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-md-12">
+                                  <select [(ngModel)]="user.position" id="user.position" name="user.position" class="form-control">
+                                    <option value="">ตำแหน่ง</option>
+                                    <option *ngFor='let data of position'  value="{{data.value}}">{{data.value}}</option>
+                                  </select>
+                                </div>
+                              </div>
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-phone"></i></span>
+                              </div>
+                              <input name="name" type="text" class="form-control" [(ngModel)]="user.phone" placeholder="เบอร์โทรศัพท์">
+                          </div>
+                         
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">วันเกิด</span>
+                                </div>
+                                <input class="form-control" [(ngModel)]="user.dob" id="date-input" type="date" name="date-input" placeholder="date">
+                              </div>
+                          
+                          <button (click)='submitUser(user)' type="button" class="btn btn-block btn-success">Create Account</button>
+                        </div>
+                        
+
+                    
+                 
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->

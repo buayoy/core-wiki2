@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+
 import { getStyle, hexToRgba } from '@coreui/coreui-pro/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import axios from 'axios';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { UserService } from '../../cherryFinal/service/user.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -384,6 +390,205 @@ export class DashboardComponent implements OnInit {
       this.mainChartData3.push(65);
     }
   }
+  
+  DataBus = [];
+  email =''
+  new:any = ''
+  reject:any = ''
+  complate:any = ''
+  close:any = ''
+  approve:any = ''
+  cancel:any = ''
+  id;
+  getResult:any = 'all'
+  textButton:string = 'อนุมัติ';
+  classButton: string = 'badge badge-success';
+  modalRef: BsModalRef;
+  Detailbook:any=[];
+  textStatus:string = 'ยังไม่ได้ตรวจสอบยืนยัน'
+  classHeader: string = 'badge badge-danger ml-2';
+  name = {}
+  images:any=[];
+  constructor(
+    private modalService: BsModalService,
+    private router:Router,
+    private route: ActivatedRoute,
+    private http:HttpClient, 
+    private userservice :UserService,
+    private auth:AngularFireAuth
+    ) 
+    {
+      this.feedNormal4()
+      this.auth.authState.subscribe(user=>{
+        // alert(user.email)
+        this.getUser(user.email)
+           })
+    // this.feedNormal2()
+   
+   }
+   openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+ async getUser(email){
+  const response = await axios({
+    method: 'get',
+    url: 'http://cherryproject.store/cherry_api/public/api/email/'+email,
+    
+  })
+  if(response.data.status == 1){
+    this.http.get<any>('http://cherryproject.store/cherry_api/public/api/book/all').subscribe(result => {
+      this.DataBus = result.data
+      // alert(JSON.stringify(this.DataBus));
+      // console.log(JSON.stringify(this.DataBus));
+    });
+  }else if(response.data.status == 2){
+    this.http.get<any>('http://cherryproject.store/cherry_api/public/api/book/all/status3').subscribe(result => {
+      this.DataBus = result.data
+      // alert(JSON.stringify(this.DataBus));
+      // console.log(JSON.stringify(this.DataBus));
+    });
+  }
+ 
+  this.name = response.data.fullname;
+  
+  }
+  feedNormal2(getResult){
+    // alert(result)
+    
+    if(getResult == 'all'){
+      this.http.get<any>('http://cherryproject.store/cherry_api/public/api/book/all').subscribe(result => {
+      this.DataBus = result.data
+      // alert(JSON.stringify(this.DataBus));
+      // console.log(JSON.stringify(this.DataBus));
+    });
+    }else{
+      this.http.get<any>('http://cherryproject.store/cherry_api/public/api/book/'+getResult).subscribe(result => {
+      this.DataBus = result.data
+      // alert(JSON.stringify(this.DataBus));
+      // console.log(JSON.stringify(this.DataBus));
+    });
+    }
+    
+  }
+  
+  feedNormal4(){
+    // alert(result)
+    
+      axios({
+        method:'get',
+        url:'http://cherryproject.store/cherry_api/public/api/book/0'
+      }).then(result=>{
+        this.cancel = result.data.total
+      })
+      axios({
+        method:'get',
+        url:'http://cherryproject.store/cherry_api/public/api/book/1'
+      }).then(result=>{
+        this.reject = result.data.total
+      })
+      axios({
+        method:'get',
+        url:'http://cherryproject.store/cherry_api/public/api/book/2'
+      }).then(result=>{
+        this.new = result.data.total
+      })
+      axios({
+        method:'get',
+        url:'http://cherryproject.store/cherry_api/public/api/book/3'
+      }).then(result=>{
+        this.approve = result.data.total
+      })
+      axios({
+        method:'get',
+        url:'http://cherryproject.store/cherry_api/public/api/book/4'
+      }).then(result=>{
+        this.complate = result.data.total
+      })
+      axios({
+        method:'get',
+        url:'http://cherryproject.store/cherry_api/public/api/book/5'
+      }).then(result=>{
+        this.close = result.data.total
+      })
+    
+    
+    
+  }
 
+  async  feedNormal3(){
+    this.id = this.route.snapshot.paramMap.get("id");
+    console.log(this.id)
+   const response = await axios({
+      method: 'get',
+      url: 'http://cherryproject.store/cherry_api/public/api/book/detail/'+this.id,
+      
+    })
+    this.Detailbook = response.data
+    console.log(response.data)
+    const responseimage = await axios({
+      method: 'get',
+      url: 'http://cherryproject.store/cherry_api/public/api/book/detail/images/'+this.id,
+      
+    })
+    console.log(responseimage.data)
+    // const response = await axios.get('http://cherryproject.store/cherry_api/public/api/book/detail/'+this.id);
+    this.images = responseimage.data
+    console.log(this.Detailbook)
+    if(response.data.status == 2){
+      this.classHeader = 'badge badge-success ml-2'
+      this.textStatus = 'ตรวจสอบยืนยันแล้ว'
+      this.textButton = 'ยกเลิกการอนุมัติ'
+      this.classButton = 'btn btn-danger'
+    }
+
+    
+   
+  }
+  async changeStatus(data){
+    //  this.id = this.route.snapshot.paramMap.get("id");
+    //  alert(Detailbook)
+      
+      // console.log(this.id)
+      // const response1 = await axios.get('http://cherryproject.store/cherry_api/public/api/book/detail/'+this.id);
+      // const response = await axios.post('http://cherryproject.store/cherry_api/public/api/book/edit',{
+      //   id:this.id,
+      //   status:0
+      // });
+      
+    //  const response = await axios.post('http://cherryproject.store/cherry_api/public/api/book/edit', {
+    //     id: this.id,
+    //     status: 2,
+    //   })
+    if(data.status == 2){
+      await axios({
+        method: 'post',
+        url: 'http://cherryproject.store/cherry_api/public/api/book/edit',
+        params: {
+          id: data.id,
+          status: 1
+        }
+      })
+      // console.log(response.data)
+      this.router.navigate(['databus'])
+    }else if(data.status == 1){
+      await axios({
+        method: 'post',
+        url: 'http://cherryproject.store/cherry_api/public/api/book/edit',
+        params: {
+          id: data.id,
+          status: 2
+        }
+      })
+      // console.log(response.data)
+      this.router.navigate(['databus'])
+    }
+    
+  }
+     
+  viewedit(data){
+    this.router.navigate([`databus/detail/${data.id}`]);
+  }
+
+  
   radioModel: string = 'Month';
 }

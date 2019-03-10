@@ -23,6 +23,7 @@ export class WikiHomeComponent implements OnInit {
     }).subscribe(items => {
     this.test = items;
     });
+    console.log(this.test)
 
     
   }

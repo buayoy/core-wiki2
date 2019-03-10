@@ -1,0 +1,82 @@
+<!--/.row-->
+<style>
+  td{
+    vertical-align: middle !important;
+  }
+
+</style>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+<img data-toggle="modal" data-target=".bd-example-modal-lg" src="https://cdn.vox-cdn.com/uploads/chorus_image/image/62721564/aquaman_classic_costume_jason_momoa.0.jpg" alt="" border=3 height=240 width=360s >
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <!-- <img  src="http://cherryproject.store/cherry_api/public/upload/book/{{data.headlines}}" alt="" border=3 height=360 width=240 > -->
+        <img  src="https://cdn.vox-cdn.com/uploads/chorus_image/image/62721564/aquaman_classic_costume_jason_momoa.0.jpg" alt="" border=3 height=240 width=360s >
+
+    </div>
+  </div>
+</div>
+
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Combined All Table
+      </div>
+      <div class="card-body" style="overflow-x:auto;">
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <td>ชื่อโครงการ</td>
+              <!-- <td>เอกสารโครงการ</td> -->
+              <td>วันที่ขอ</td>
+              <td>ชื่อผู้ขอ</td>
+              <td>ตำแหน่งผู้ขอใช้รถ</td>
+              <td>สังกัด</td>
+              <td>วันเวลาที่ขอใช้รถ</td>
+              <td>ถึงวันที่</td>
+              <td>วัตถุประสงค์</td>
+              <td>ประเภทรถ</td>
+              <td>เบอร์ติดต่อกลับ</td>
+              <td>สถานะ</td>
+
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let data of DataBus">
+
+              <td>{{data.projectname}}</td>
+              <!-- <td><img  src="http://cherryproject.store/cherry_api/public/upload/book/{{data.headlines}}" alt="" border=3 height=360 width=240 ></td> -->
+              <td>{{data.projectdate}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.position}}</td>
+              <td>{{data.responsible}}</td>
+              <td>{{data.start_date}}||{{data.timestart}}</td>
+              <td>{{data.end_date}}||{{data.timesend}}</td>
+              <td>{{data.objective}}</td>
+              <td>{{data.cartype}}</td>
+              <td>{{data.phonenumber}}</td>
+              <td>{{data.status  ==  "2" ? "อนุมัติเรียบร้อยแล้ว": "รอการอนุมัติ" }}</td>
+              
+
+
+              <td>
+                <button class="badge badge-success" type="button" (click)="viewedit(data)">ดูรายละเอียด</button>
+                <!-- <button (click)='changeStatus(data)' type="button" [ngClass]="classButton">{{data.status == "2" ? "ยกเลิกการอนุมัติ" : "อนุมัติ"}}</button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+
+<!--/.row-->
